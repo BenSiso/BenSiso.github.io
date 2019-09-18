@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>tabFund.me - Console </title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/unicons.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+    <!-- MAIN STYLE -->
+    <link rel="stylesheet" href="css/tooplate-style.css">
+    <style> 
+
+
+
+
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  position: fixed;
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}
+  </style>
+  </head>
+  <body>
+   
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDZVbaOKb2xRhnEctxDbPcl_Em4GvXeBrM",
+    authDomain: "tabfundme-d266e.firebaseapp.com",
+    databaseURL: "https://tabfundme-d266e.firebaseio.com",
+    projectId: "tabfundme-d266e",
+    storageBucket: "",
+    messagingSenderId: "394403115615",
+    appId: "1:394403115615:web:1bf4fd6715b2e5ed"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  function signOut() {
+    // Sign out of Firebase.
+    firebase.auth().signOut();
+  }
+ 
+
+                       
+</script>
+
+<script type="text/javascript">
+function authStateObserver(){
+  if 
+ // Initiate Firebase Auth.
+}
+function initFirebaseAuth() {
+  // Listen to auth state changes.
+  firebase.auth().onAuthStateChanged(authStateObserver);
+} 
+window.onload = function() {
+      initFirebaseAuth();
+    };
+
+
+ function toggleSignIn() {
+      if (firebase.auth().currentUser) {
+        // [START signout]
+        firebase.auth().signOut();
+        // [END signout]
+      } else {
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        if (email.length < 4) {
+          alert('Please enter an email address.');
+          return;
+        }
+        if (password.length < 4) {
+          alert('Please enter a password.');
+          return;
+        }
+        // Sign in with email and pass.
+        // [START authwithemail]
+        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // [START_EXCLUDE]
+          if (errorCode === 'auth/wrong-password') {
+            alert('Wrong password.');
+          } else {
+            alert(errorMessage);
+          }
+          console.log(error);
+          // [END_EXCLUDE]
+        });
+        // [END authwithemail]
+      }
+      document.getElementById("login").innerHTML = "<a href='./console.html'> Console </a>  |    <a href='#' onclick='signOut()'> Logout </a>";
+    }
+
+
+</script>
+    <!-- MENU -->
+    <nav class="navbar navbar-expand-sm navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">tabFund.me</a>
+
+          
+                <ul class="navbar-nav ml-lg-auto">
+                    <div class="ml-lg-4">
+                      <div id="login" class="color-mode d-lg-flex justify-content-center align-items-center">
+                        <i class='uil uil-user'>  
+                        </i>
+                        <!-- <div id="login" ></div> -->
+                       Sign Out
+                      </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ABOUT -->
+    
+    <section class="about full-screen d-lg-flex justify-content-center align-items-center" id="about">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-7 col-md-12 col-12 d-flex align-items-center" style="margin:5px 5px 5px 5px;background-color: #eee8f3;border-radius: 4px;border-width: 1px;border-color:#fdfdfd;border-bottom-width: 2px;border-bottom-color: black;">
+                    <div class="about-text">
+                        <h1 class="animated animated-text">
+                            <span class="mr-2">Estimate Revanue <b style="color:red" id="estimate">210$</b> 
+                             </span> 
+                        </h1>(Total revanue till now 234$)
+                          <h1 class="animated animated-text">
+                            <span class="mr-2">Total tCoins <b id="tchoin"style="color:red">24354351</b> 
+                             </span> 
+                        </h1>(we can help your with marketing)
+                         <h1 class="animated animated-text">
+                            <span class="mr-2">Today New Members <b id="today" style="color:red">21</b> 
+                             </span> 
+                        </h1>(we can help your with marketing)
+                          <h1 class="animated animated-text">
+                            <span class="mr-2">Monetly new members <b style="color:red" id="month">120</b> 
+                             </span>
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-12 col-12" style="margin:5px 5px 5px 5px;background-color: #eee8f3;border-radius: 4px;border-width: 1px;border-color:#fdfdfd;border-bottom-width: 2px;border-bottom-color: black;" >
+                    <h1 class="animated animated-text" >Get more members today.</h1>
+                        <span class="mr-2" ><p style="font-size:14px">use our premade posters its<b> FREE</b>.</br>your community number  <b>23</b> so share it.</p></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/Headroom.js"></script>
+    <script src="js/jQuery.headroom.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/smoothscroll.js"></script>
+    <script src="js/custom.js"></script>
+
+  </body>
+</html>

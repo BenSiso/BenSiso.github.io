@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>tabFund.me - Build a sustainable community with us </title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/unicons.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+    <!-- MAIN STYLE -->
+    <link rel="stylesheet" href="css/tooplate-style.css">
+    <style> 
+
+
+.form-signin {
+  max-width: 380px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+
+  .form-signin-heading,
+  .checkbox {
+    margin-bottom: 10px;
+  }
+
+  .checkbox {
+    font-weight: normal;
+  }
+
+  .form-control {
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    @include box-sizing(border-box);
+
+    &:focus {
+      z-index: 2;
+    }
+  }
+
+  input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: 20px;
+  }
+
+  input[type="password"] {
+    margin-bottom: 20px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+
+
+
+
+
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  position: fixed;
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}
+  </style>
+  </head>
+  <body>
+   
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDZVbaOKb2xRhnEctxDbPcl_Em4GvXeBrM",
+    authDomain: "tabfundme-d266e.firebaseapp.com",
+    databaseURL: "https://tabfundme-d266e.firebaseio.com",
+    projectId: "tabfundme-d266e",
+    storageBucket: "",
+    messagingSenderId: "394403115615",
+    appId: "1:394403115615:web:1bf4fd6715b2e5ed"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  function signOut() {
+    // Sign out of Firebase.
+    firebase.auth().signOut();
+  }
+ 
+
+                       
+</script>
+
+<script type="text/javascript">
+ function toggleSignIn() {
+      if (firebase.auth().currentUser) {
+        // [START signout]
+        firebase.auth().signOut();
+        // [END signout]
+      } else {
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        if (email.length < 4) {
+          alert('Please enter an email address.');
+          return;
+        }
+        if (password.length < 4) {
+          alert('Please enter a password.');
+          return;
+        }
+        // Sign in with email and pass.
+        // [START authwithemail]
+        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // [START_EXCLUDE]
+          if (errorCode === 'auth/wrong-password') {
+            alert('Wrong password.');
+          } else {
+            alert(errorMessage);
+          }
+          console.log(error);
+          // [END_EXCLUDE]
+        });
+        // [END authwithemail]
+      }
+      document.getElementById("login").innerHTML = "<a href='./console.html'> Console </a>  |    <a href='#' onclick='signOut()'> Logout </a>";
+    }
+
+
+</script>
+    <!-- MENU -->
+    <nav class="navbar navbar-expand-sm navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">tabFund.me</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link"><span data-hover="About">About</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#project" class="nav-link"><span data-hover="Our Solution">Our Solution</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#resume" class="nav-link"><span data-hover="Our Values">Our Values</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link"><span data-hover="Join">Join</span></a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ml-lg-auto">
+                    <div class="ml-lg-4">
+                      <div id="login" class="color-mode d-lg-flex justify-content-center align-items-center">
+                        <i class='uil uil-user'>  
+                        </i>
+                        <!-- <div id="login" ></div> -->
+                       Login
+                      </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ABOUT -->
+    <section class="about full-screen d-lg-flex justify-content-center align-items-center" id="about">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-7 col-md-12 col-12 d-flex align-items-center">
+                    <div class="about-text">
+                        <small class="small-text">tabFund.me is fast, easy <span class="mobile-block">and has no raise requirements or fees.</span></small>
+                        <h1 class="animated animated-text">
+                            <span class="mr-2">Hey Community</span>
+                                <div class="animated-info">
+                                    <span class="animated-item"> Manger</span>
+                                    <span class="animated-item"> Leader</span>
+                                    <span class="animated-item"> Chief</span>
+                                </div>
+                        </h1>
+
+                        <p>Building a successful community is not easy.Raising money is even harder. Our simple and easy solution will help you raise money from your community memebers  by open new tab in their chrome browser.</p>
+                        
+                        <div class="custom-btn-group mt-4">
+                          <a href="#" class="btn mr-lg-2 custom-btn"> Read More </a>
+                          <a href="#contact" class="btn custom-btn custom-btn-bg custom-btn-link"> Join Us</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-12 col-12">
+                    <div class="about-image svg">
+                        <img src="images/undraw/undraw_software_engineer_lvl5.svg" class="img-fluid" alt="svg image">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="project py-5" id="project">
+        <div class="container">
+                
+                <div class="row">
+                  <div class="col-lg-11 text-center mx-auto col-12">
+
+                      <div class="col-lg-8 mx-auto">
+                        <h2>tabFund.me Chrome Extension </h2>
+                      </div>
+
+                      <div class="owl-carousel owl-theme">
+                        <div class="item">
+                          <div  class="project-info">
+                            <img src="part2.jpg" class="img-fluid" style="border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  " alt="project image">
+                          </div>
+                        </div>
+
+                      </div>
+
+                  </div>
+                </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="resume py-5 d-lg-flex justify-content-center align-items-center" id="resume">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-6 col-12">
+                  <h2 class="mb-4">Community leader</h2>
+
+                    <div class="timeline">
+                        <div class="timeline-wrapper">
+                             <div class="timeline-yr">
+                                  <span>1</span>
+                             </div>
+                             <div class="timeline-info">
+                                  <h3><span>Join</span><small>its really easy :) </small></h3>
+                                  <p>Tell us about your community and about your goals as a community leader in the form below.</p>
+                             </div>
+                        </div>
+
+                        <div class="timeline-wrapper">
+                            <div class="timeline-yr">
+                                <span>2</span>
+                            </div>
+                            <div class="timeline-info">
+                                <h3><span>Share</span><small>we will help you!</small></h3>
+                                <p>Share our extension with your community and start earning  money. </p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-wrapper">
+                            <div class="timeline-yr">
+                                <span>3</span>
+                            </div>
+                            <div class="timeline-info">
+                                <h3><span>Maintains<small>we built a really cool system just for you! </small></h3>
+                                <p> By login the system you can see how much new memebers are using our extension with your community code.</p>
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-12">
+                  <h2 class="mb-4 mobile-mt-2">Our Values</h2>
+
+                    <div class="timeline">
+                        <div class="timeline-wrapper">
+                             <div class="timeline-yr">
+                                  <span>Trust</span>
+                             </div>
+                             <div class="timeline-info">
+                                  <h3><span>Trust needs to be earned</span><small></small></h3>
+                                  <p>tabFund.me project is an open source project(chrome extension + this website).Check it out!</p>
+                             </div>
+                        </div>
+
+                        <div class="timeline-wrapper">
+                            <div class="timeline-yr">
+                                <span>Data</span>
+                            </div>
+                            <div class="timeline-info">
+                                <h3><span>Privacy </span><small></small></h3>
+                                <p> Privacy by design, We don't collect community members surfing data or notes data.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-wrapper">
+                            <div class="timeline-yr">
+                                <span>Freedom</span>
+                            </div>
+                            <div class="timeline-info">
+                                <h3><span>Donating Freedom</span><small></small></h3>
+                                <p>Our chrome extension available globally so everyone, no matter where they live, can support your community,24/7. </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact py-5" id="contact">
+      <div class="container">
+        <div class="row">
+          
+          <div class="col-lg-5 mr-lg-5 col-12">
+            
+            <div class="google-map w-100">
+           <img src="contectImg.png" frameborder="0" style="width: 100%;
+  height: auto;border:0">
+            </div>
+
+            <div class="contact-info d-flex justify-content-between align-items-center py-4 px-lg-5">
+                <div class="contact-info-item">
+                  <h3 class="mb-3 text-white">Ask anything!</h3>
+                  <p><a href="mailto:hello@company.co">tabFundme@gmail.com</a></p>
+                </div>
+
+                <ul class="social-links">
+                     <li><a href="#" class="uil uil-dribbble" data-toggle="tooltip" data-placement="left" title="Dribbble"></a></li>
+                     <li><a href="#" class="uil uil-instagram" data-toggle="tooltip" data-placement="left" title="Instagram"></a></li>
+                     <li><a href="#" class="uil uil-youtube" data-toggle="tooltip" data-placement="left" title="Youtube"></a></li>
+                </ul>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6 col-12">
+            <div class="contact-form">
+              <h2 class="mb-4">Interested to work together? Let's talk</h2>
+
+              <form action="" method="get">
+                <div class="row">
+                  <div class="col-lg-6 col-12">
+                    <input type="text" class="form-control" name="name" placeholder="Your Name" id="name">
+                  </div>
+
+                  <div class="col-lg-6 col-12">
+                    <input type="email" class="form-control" name="email" placeholder="Email" id="email">
+                  </div>
+
+                  <div class="col-12">
+                    <textarea name="message" rows="6" class="form-control" id="message" placeholder="Tell us about your community"></textarea>
+                  </div>
+
+                  <div class="ml-lg-auto col-lg-5 col-12">
+                    <input type="submit" class="form-control submit-btn" value="Join">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <script type="text/javascript">
+        // login already 
+            if  (!!firebase.auth().currentUser) {
+                          
+             document.getElementById("login").innerHTML = 
+             "<i class='uil uil-user'></i><a href='./console.html'> Console </a>  |    <a href='#' onclick='signOut()'> Logout </a>";
+              
+            } else {
+              document.getElementById("login").innerHTML = "<i class='uil uil-user'></i><a href='#popup1' style='color:black;'>Login</a>";
+            }
+
+    </script>
+
+      <div id="popup1" class="overlay">
+                             <div class="popup">
+                              <h2>Welcome back!</h2>
+                              <a class="close" style="margin-left: 5px;" href="#">&times;</a>
+                              <form class="form-signin" action="console.html" method="get" >       
+                                 <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
+                                 <input type="password" class="form-control" name="password" placeholder="Password" required="" style="margin-top: 5px;margin-bottom: 5px;"/>  
+                                 <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
+                             </form>
+                             </div>
+                        </div>
+    <!-- FOOTER -->
+     <footer class="footer py-5">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-lg-12 col-12">                                
+                        <p class="copyright-text text-center">Copyright &copy; 2019 tabFund.me  All rights reserved</p>
+                      
+                    </div>
+                    
+               </div>
+          </div>
+     </footer>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/Headroom.js"></script>
+    <script src="js/jQuery.headroom.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/smoothscroll.js"></script>
+    <script src="js/custom.js"></script>
+
+  </body>
+</html>
