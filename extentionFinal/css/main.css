@@ -93,6 +93,9 @@ Primary use:
     height: auto;
     max-width: 551px;
     min-height: 100px;
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
     vertical-align: middle;
     width: 60%;
     position: relative;
@@ -153,6 +156,9 @@ Primary use:
     height: auto;
     max-width: 551px;
     min-height: 100px;
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
     vertical-align: middle;
     width: 60%;
     position: relative;
@@ -622,6 +628,7 @@ Primary use:
 
         max-height: 500px;
         overflow-y: auto;
+         overflow-x: hidden;
         margin: 0 auto;
         position:absolute;
         top:5px;
