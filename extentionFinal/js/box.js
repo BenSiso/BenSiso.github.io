@@ -18,6 +18,15 @@ $(window).on('load',function () {
     $('.popupCloseButton2').click(function(){
         $('.hover_bkgr_fricc2').hide();
     });
+
+    
+    $('.hover_bkgr_fricc3').show();
+    $('.hover_bkgr_fricc3').click(function(){
+        $('.hover_bkgr_fricc3').hide();
+    });
+    $('.popupCloseButton3').click(function(){
+        $('.hover_bkgr_fricc3').hide();
+    });
 });
 
 
