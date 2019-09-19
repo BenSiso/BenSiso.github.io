@@ -18,13 +18,12 @@ const config = {
  firebase.initializeApp(config);
 
   // Get a reference to the database service
-  var database = firebase.database();
 //create a functions to push
     function firebasePush(inputEmail,inputName,inputCommunityInfo) {
 
         var rdm = Math.floor(Math.random() * 1000000); 
         //push itself
-        var mailsRef = database.ref('newLeadersRequests/' + rdm).push().set(
+        var mailsRef = firebase.database().ref('newLeadersRequests/' + rdm).push().set(
             {
                 mail: inputEmail.value,
                 name: inputName.value,
