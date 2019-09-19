@@ -21,9 +21,9 @@ const config = {
 //create a functions to push
     function firebasePush(inputEmail,inputName,inputCommunityInfo) {
          firebase.initializeApp(config);
-        var rdm = Math.floor(Math.random() * 1000000); 
+        
         //push itself
-        var mailsRef = firebase.database().ref('newLeadersRequests/' + rdm).push().set(
+        var mailsRef = firebase.database().ref('newLeadersRequests/').push().set(
             {
                 mail: inputEmail.value,
                 name: inputName.value,
