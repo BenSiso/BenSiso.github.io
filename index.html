@@ -159,45 +159,7 @@
                        
 </script>
 
-<script type="text/javascript">
- function toggleSignIn() {
-      if (firebase.auth().currentUser) {
-        // [START signout]
-        firebase.auth().signOut();
-        // [END signout]
-      } else {
-        var email = document.getElementById('email').value;
-        var password = document.getElementById('password').value;
-        if (email.length < 4) {
-          alert('Please enter an email address.');
-          return;
-        }
-        if (password.length < 4) {
-          alert('Please enter a password.');
-          return;
-        }
-        // Sign in with email and pass.
-        // [START authwithemail]
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          // [START_EXCLUDE]
-          if (errorCode === 'auth/wrong-password') {
-            alert('Wrong password.');
-          } else {
-            alert(errorMessage);
-          }
-          console.log(error);
-          // [END_EXCLUDE]
-        });
-        // [END authwithemail]
-      }
-      document.getElementById("login").innerHTML = "<a href='./console.html'> Console </a>  |    <a href='#' onclick='signOut()'> Logout </a>";
-    }
 
-
-</script>
     <!-- MENU -->
     <nav class="navbar navbar-expand-sm navbar-light">
         <div class="container">
@@ -229,10 +191,9 @@
                 <ul class="navbar-nav ml-lg-auto">
                     <div class="ml-lg-4">
                       <div id="login" class="color-mode d-lg-flex justify-content-center align-items-center">
-                        <i class='uil uil-user'>  
-                        </i>
+                        
                         <!-- <div id="login" ></div> -->
-                       Login
+                       New Tab Demo
                       </div>
                     </div>
                 </ul>
@@ -446,30 +407,8 @@
         </div>
       </div>
     </section>
-    <script type="text/javascript">
-        // login already 
-            if  (!!firebase.auth().currentUser) {
-                          
-             document.getElementById("login").innerHTML = 
-             "<i class='uil uil-user'></i><a href='./console.html'> Console </a>  |    <a href='#' onclick='signOut()'> Logout </a>";
-              
-            } else {
-              document.getElementById("login").innerHTML = "<i class='uil uil-user'></i><a href='#popup1' style='color:black;'>Login</a>";
-            }
 
-    </script>
-
-      <div id="popup1" class="overlay">
-                             <div class="popup">
-                              <h2>Welcome back!</h2>
-                              <a class="close" style="margin-left: 5px;" href="#">&times;</a>
-                              <form class="form-signin" action="console.html" method="get" >       
-                                 <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
-                                 <input type="password" class="form-control" name="password" placeholder="Password" required="" style="margin-top: 5px;margin-bottom: 5px;"/>  
-                                 <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
-                             </form>
-                             </div>
-                        </div>
+  
     <!-- FOOTER -->
      <footer class="footer py-5">
           <div class="container">
