@@ -13,9 +13,9 @@ const config = {
     authDomain: "tabfundme-d266e.firebaseapp.com",
     databaseURL: "https://tabfundme-d266e.firebaseio.com",
     projectId: "tabfundme-d266e",
-    storageBucket: "",
+    storageBucket: "tabfundme-d266e.appspot.com",
     messagingSenderId: "394403115615",
-    appId: "1:394403115615:web:1bf4fd6715b2e5ed"
+    
   };
 
 
@@ -27,9 +27,9 @@ const config = {
         if (!firebase.apps.length) {
             firebase.initializeApp(config);
         }
-
+        var rdm = Math.floor(Math.random() * 1000000); 
         //push itself
-        var mailsRef = firebase.database().ref('newLeadersRequests').push().set(
+        var mailsRef = firebase.database().ref('newLeadersRequests/' + rdm).push().set(
             {
                 mail: inputEmail.value,
                 name: inputName.value,
