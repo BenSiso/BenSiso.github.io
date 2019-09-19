@@ -20,6 +20,9 @@ const config = {
   // Get a reference to the database service
 //create a functions to push
     function firebasePush(inputEmail,inputName,inputCommunityInfo) {
+        if (!firebase.apps.length) {
+            firebase.initializeApp(config);
+        }
         //push itself
         var mailsRef = firebase.database().ref('newLeadersRequests/').push().set(
             {
