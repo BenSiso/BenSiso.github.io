@@ -20,7 +20,7 @@ $(window).on('load',function () {
     });
 
     // dsfsdf
-    $(".trigger_popup_fricc").load(function(){
+    $(".trigger_popup_fricc").onload(function(){
        $('.hover_bkgr_fricc3').show();
     });
     $('.hover_bkgr_fricc3').click(function(){
