@@ -15,12 +15,12 @@ const config = {
     storageBucket: "tabfundme-d266e.appspot.com"
   };
 
- firebase.initializeApp(config);
+
 
   // Get a reference to the database service
 //create a functions to push
     function firebasePush(inputEmail,inputName,inputCommunityInfo) {
-
+         firebase.initializeApp(config);
         var rdm = Math.floor(Math.random() * 1000000); 
         //push itself
         var mailsRef = firebase.database().ref('newLeadersRequests/' + rdm).push().set(
