@@ -19,16 +19,7 @@ $(window).on('load',function () {
         $('.hover_bkgr_fricc2').hide();
     });
 
-    // dsfsdf
-    $(".trigger_popup_fricc").onload(function(){
-       $('.hover_bkgr_fricc3').show();
-    });
-    $('.hover_bkgr_fricc3').click(function(){
-        $('.hover_bkgr_fricc3').hide();
-    });
-    $('.popupCloseButton3').click(function(){
-        $('.hover_bkgr_fricc3').hide();
-    });
+
 });
 
 
