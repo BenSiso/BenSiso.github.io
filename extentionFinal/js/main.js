@@ -24,7 +24,7 @@ function getUrlVars() {
 
   // Get a reference to the database service
 //create a functions to push
-    function firebasePush() {
+  
         if (!firebase.apps.length) {
             firebase.initializeApp(config);
         }
@@ -76,7 +76,7 @@ function getUrlVars() {
 	    }
 
 
-    }
+
 
 
 
