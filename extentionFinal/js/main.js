@@ -5,9 +5,6 @@ var counter = 0;
 var communityName="";
 
 //grab an input
-const inputEmail = form.querySelector('#email');
-const inputName = form.querySelector('#name');
-const inputCommunityInfo = form.querySelector('#message');
 //config your firebase push
 const config = {
     apiKey: "AIzaSyDZVbaOKb2xRhnEctxDbPcl_Em4GvXeBrM",
@@ -27,7 +24,7 @@ function getUrlVars() {
 
   // Get a reference to the database service
 //create a functions to push
-    function firebasePush(inputEmail,inputName,inputCommunityInfo) {
+    function firebasePush() {
         if (!firebase.apps.length) {
             firebase.initializeApp(config);
         }
@@ -42,7 +39,9 @@ function getUrlVars() {
 	    	// check if user already exists 
 	    	var usersRef = firebase.database().ref('users');
 	    	if (!usersRef.child(urlparameter)) {
+	    		console.log("added a new user" +urlparameter);
 	    		document.getElementById('newuser').click();
+
 	    	// 	firebase.database().ref('users/' + urlparameter).set({
    			// 		 userid: urlparameter,
     		// 		count : 0
@@ -82,33 +81,3 @@ function getUrlVars() {
 
 
 
-    function toggleStar(postRef, uid) {
- 	 postRef.transaction(function(post) {
-    	if (post) {
-    	  if (post.stars && post.stars[uid]) {
-     	   post.starCount--;
-     	   post.stars[uid] = null;
-    	  } else {
-      	  post.starCount++;
-      	  if (!post.stars) {
-       	   post.stars = {};
-      	  }
-      	 post.stars[uid] = true;
-    	  }
-    	}
-    	return post;
- 	 });
-	}
-
-
-
-//push on form submit
-    if (form) {
-        form.addEventListener('submit', function (evt) {
-            evt.preventDefault();
-            firebasePush(inputEmail,inputName,inputCommunityInfo);
-
-            //shows alert if everything went well.
-            return alert('Successfully Sent to us, We will send you email soon.');
-        })
-    }
