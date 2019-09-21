@@ -56,7 +56,7 @@ function getUrlVars() {
   				//   }
 				  // });
 	    	} else {
-	    		var userCounterRef = firebase.database().ref('users/' + urlparameter);
+	    		var userCounterRef = firebase.database().ref('users/' + urlparameter +'/');
 	    		console.log(" user name to look for " + urlparameter);
 	    		userCounterRef.transaction(function(user) {
 	    		if (user!=null) {
