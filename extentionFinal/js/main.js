@@ -81,7 +81,7 @@ function getCommunityName(urlparameter) {
     return new Promise(function (resolve, reject) {
         try {
             var commNameRef = firebase.database().ref('users/' + urlparameter +'/community');
-				resolve(commNameRef.on('value', function(commName) {return commName.val(); }));
+				resolve(commNameRef.on('value', function(commName) {console.log("community " + commName.val());return commName.val(); }));
         } catch (e) {
             reject(e)
         }
