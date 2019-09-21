@@ -63,30 +63,20 @@ function getUrlVars() {
 				});
 
 				// get comm name
-				getCommunityName(urlparameter).then(function (result) {
-   			     console.log("commu name: " +  result);
-   			     	var commRef = firebase.database().ref('Communities/' + result +'/count');
+				var commNameRef = firebase.database().ref('users/' + urlparameter +'/community');
+				commNameRef.on('value', function(commName) {
+					console.log("commu name: " +  commName.val());
+   			     	var commRef = firebase.database().ref('Communities/' + commName.val() +'/count');
 					commRef.transaction(function(commCount) {
   					// If users/ada/rank has never been set, currentRank will be `null`.
   						return commCount+1;
 					});
-   				 });
+
+				});
 			}
 		}
 	    		
 
-
-
-function getCommunityName(urlparameter) {
-    return new Promise(function (resolve, reject) {
-        try {
-            var commNameRef = firebase.database().ref('users/' + urlparameter +'/community');
-				resolve(commNameRef.on('value', function(commName) {console.log("community " + commName.val());return commName.val(); }));
-        } catch (e) {
-            reject(e)
-        }
-    });
-}
 
 
 
