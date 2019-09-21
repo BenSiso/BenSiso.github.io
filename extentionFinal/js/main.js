@@ -31,8 +31,8 @@ function getUrlVars() {
         //push itself
         
     	var urlparameter = "none";
-    	if(window.location.href.indexOf(parameter) > -1){
-    	    	urlparameter = getUrlVars()[username];
+    	if(window.location.href.indexOf(getUrlVars()) > -1){
+    	    	urlparameter = getUrlVars()["username"];
 	       }
 
 	    if (urlparameter != "none") {
