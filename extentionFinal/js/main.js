@@ -39,7 +39,7 @@ function getUrlVars() {
 	    	// check if user already exists 
 	    	var usersRef = firebase.database().ref('users');
 	    	console.log("username parameters" + urlparameter);
-	    	console.log("dfdfddfdf");
+
 	    	if (usersRef.child(urlparameter) == false) {
 	    		console.log("added a new user" + urlparameter);
 	    		document.getElementById('newuser').click();
@@ -59,7 +59,7 @@ function getUrlVars() {
 	    			user.count++;
 	    			counter=user.count;
 	    			// find user community 
-	    			communityName=user.communityName;
+	    			communityName=user.community;
 
 	    		});
 	    		// add counter +1 to user community
