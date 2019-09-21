@@ -69,11 +69,27 @@ function getUrlVars() {
 	    // 			console.log("null user" );
 	    // 		}
 			 	// });
-			 	var adaRankRef = firebase.database().ref('users/' + urlparameter +'/count');
-				adaRankRef.transaction(function(currentRank) {
+			 	var counterUserRef = firebase.database().ref('users/' + urlparameter +'/count');
+				counterUserRef.transaction(function(currentRank) {
   				// If users/ada/rank has never been set, currentRank will be `null`.
   				return currentRank + 1;
 				});
+
+				var adaRankRef = firebase.database().ref('users/' + urlparameter +'/community');
+				adaRankRef.transaction(function(commName) {
+  				// If users/ada/rank has never been set, currentRank will be `null`.
+  				communityName = commName;
+  				return commName;
+				});
+
+				var commRef = firebase.database().ref('Communities/' + communityName +'/count');
+				commRef.transaction(function(commCount) {
+  				// If users/ada/rank has never been set, currentRank will be `null`.
+  			
+  				return commCount+1;
+				});
+
+
 
 	    			
 	    			
