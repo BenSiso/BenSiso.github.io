@@ -81,14 +81,13 @@ function getUrlVars() {
    			     	var commRef = firebase.database().ref('Communities/' + communityName +'/count');
 					commRef.transaction(function(commCount) {
   					// If users/ada/rank has never been set, currentRank will be `null`.
-  			
-  					return commCount+1;
-				});
+  						return commCount+1;
+					});
 
 
    				 }).catch(function (error) {
   			      console.log(error)
-				})
+				});
 				
 				
 
