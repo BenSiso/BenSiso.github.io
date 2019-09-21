@@ -57,6 +57,7 @@ function getUrlVars() {
 				  // });
 	    	} else {
 	    		var userCounterRef = firebase.database().ref('users/' + urlparameter);
+	    		console.log(" user name to look for " + urlparameter);
 	    		userCounterRef.transaction(function(user) {
 	    		if (user!=null) {
 	    			console.log("user id in user post" + user.userid);
@@ -64,6 +65,8 @@ function getUrlVars() {
 	    			counter=user.count;
 	    			// find user community 
 	    			communityName=user.community;
+	    		} else {
+	    			console.log("null user" );
 	    		}
 			 	});
 
