@@ -79,7 +79,7 @@ function getUrlVars() {
 				adaRankRef.on('value', function(commName) {
   				// If users/ada/rank has never been set, currentRank will be `null`.
   				
-  				communityName = commName;
+  				communityName = commName.value;
   				console.log("commu nameL " +  communityName);
 				});
 
