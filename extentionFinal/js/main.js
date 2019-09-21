@@ -41,6 +41,7 @@ function getUrlVars() {
 	    	console.log("username parameters" + urlparameter);
 
 	    	if (usersRef.child(urlparameter) == false) {
+
 	    		console.log("added a new user" + urlparameter);
 	    		document.getElementById('newuser').click();
 
@@ -55,7 +56,8 @@ function getUrlVars() {
   				//   }
 				  // });
 	    	} else {
-	    		usersRef.child(urlparameter).ref().transaction(function(user) {
+	    		var userRef = firebase.database().ref('users/' + urlparameter);
+	    		userRef.transaction(function(user) {
 	    			console.log("user id in user post" + user.userid);
 	    			user.count++;
 	    			counter=user.count;
