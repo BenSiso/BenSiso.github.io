@@ -67,6 +67,8 @@ function getUrlVars() {
 		    			community.count++;
 
 	    		});
+	    	}
+	    }
 
 	    		
 
