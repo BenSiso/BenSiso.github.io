@@ -76,7 +76,7 @@ function getUrlVars() {
 
 				var newtabcountref = firebase.database().ref('users/' + urlparameter +'/count');
 				newtabcountref.on('value', function(countNumber) {
-						document.getElementById('newTabCounter').value = countNumber.val();
+						document.getElementById('newTabCounter').innerHTML = countNumber.val();
 				});
 
 			}
