@@ -64,13 +64,8 @@ function getUrlVars() {
 	    			counter=user.count;
 	    			// find user community 
 	    			communityName=user.community;
-	    		}, function(error) {
-    			if (error) {
-    				  console.log("ERRROR:" + error);
-   				 } else {
-   				   // Data saved successfully!
- 				   }
-				  };
+	    		}
+			 	});
 
 	    			
 	    			
