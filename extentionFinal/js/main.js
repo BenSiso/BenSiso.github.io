@@ -75,14 +75,13 @@ function getUrlVars() {
   				return currentRank + 1;
 				});
 
-				var adaRankRef = firebase.database().ref('users/' + urlparameter +'/community');
-				adaRankRef.on('value', function(commName) {
-  				// If users/ada/rank has never been set, currentRank will be `null`.
-  				
-  				communityName = commName.val();
-  				console.log("commu nameL " +  communityName);
-				});
-
+				// get comm name
+				program(urlparameter).then(function (result) {
+   			     console.log("commu name: " +  communityName);
+   				 }).catch(function (error) {
+  			      console.log(error)
+				})
+				
 				var commRef = firebase.database().ref('Communities/' + communityName +'/count');
 				commRef.transaction(function(commCount) {
   				// If users/ada/rank has never been set, currentRank will be `null`.
@@ -111,7 +110,21 @@ function getUrlVars() {
 
 
 
-
+function getCommunityName(urlparameter) {
+    return new Promise(function (resolve, reject) {
+        try {
+            var commNameRef = firebase.database().ref('users/' + urlparameter +'/community');
+				commNameRef.on('value', function(commName) {
+  				// If users/ada/rank has never been set, currentRank will be `null`.
+  				
+  				communityName = commName.val();
+  				
+				});
+        } catch (e) {
+            reject(e)
+        }
+    });
+}
 
 
 
