@@ -56,8 +56,8 @@ function getUrlVars() {
   				//   }
 				  // });
 	    	} else {
-	    		var userCounterRef = firebase.database().ref('users/' + urlparameter + '/count');
-	    		userCounterRef.transaction(function(count) {
+	    		var userCounterRef = firebase.database().ref('users/' + urlparameter);
+	    		userCounterRef.transaction(function(user) {
 	    		if (user!=null) {
 	    			console.log("user id in user post" + user.userid);
 	    			user.count++;
