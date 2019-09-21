@@ -78,17 +78,19 @@ function getUrlVars() {
 				// get comm name
 				getCommunityName(urlparameter).then(function (result) {
    			     console.log("commu name: " +  communityName);
+   			     	var commRef = firebase.database().ref('Communities/' + communityName +'/count');
+					commRef.transaction(function(commCount) {
+  					// If users/ada/rank has never been set, currentRank will be `null`.
+  			
+  					return commCount+1;
+				});
+
+
    				 }).catch(function (error) {
   			      console.log(error)
 				})
 				
-				var commRef = firebase.database().ref('Communities/' + communityName +'/count');
-				commRef.transaction(function(commCount) {
-  				// If users/ada/rank has never been set, currentRank will be `null`.
-  			
-  				return commCount+1;
-				});
-
+				
 
 
 	    			
