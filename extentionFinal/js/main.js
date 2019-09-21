@@ -69,11 +69,7 @@ function getUrlVars() {
 	    		});
 
 	    		
-	    	
-	    	
-	    	
 
-	    }
 
 
 
