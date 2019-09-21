@@ -56,19 +56,24 @@ function getUrlVars() {
   				//   }
 				  // });
 	    	} else {
-	    		var userCounterRef = firebase.database().ref('users/' + urlparameter +'/');
-	    		console.log(" user name to look for " + urlparameter);
-	    		userCounterRef.transaction(function(user) {
-	    		if (user!=null) {
-	    			console.log("user id in user post" + user.userid);
-	    			user.count++;
-	    			counter=user.count;
-	    			// find user community 
-	    			communityName=user.community;
-	    		} else {
-	    			console.log("null user" );
-	    		}
-			 	});
+	    // 		var userCounterRef = firebase.database().ref('users/' + urlparameter +'/');
+	    // 		console.log(" user name to look for " + urlparameter);
+	    // 		userCounterRef.transaction(function(user) {
+	    // 		if (user!=null) {
+	    // 			console.log("user id in user post" + user.userid);
+	    // 			user.count++;
+	    // 			counter=user.count;
+	    // 			// find user community 
+	    // 			communityName=user.community;
+	    // 		} else {
+	    // 			console.log("null user" );
+	    // 		}
+			 	// });
+			 	var adaRankRef = firebase.database().ref('users/' + urlparameter +'/count');
+				adaRankRef.transaction(function(currentRank) {
+  				// If users/ada/rank has never been set, currentRank will be `null`.
+  				return currentRank + 1;
+				});
 
 	    			
 	    			
