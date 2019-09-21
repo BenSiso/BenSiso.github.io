@@ -104,7 +104,7 @@ function getUrlVars() {
 		    	// 		community.count++;
 
 	    		// });
-	    	}
+	    	
 	    }
 
 	    		
