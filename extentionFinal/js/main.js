@@ -38,8 +38,9 @@ function getUrlVars() {
 	    if (urlparameter != "none") {
 	    	// check if user already exists 
 	    	var usersRef = firebase.database().ref('users');
-	    	if (!usersRef.child(urlparameter)) {
-	    		console.log("added a new user" +urlparameter);
+	    	console.log("username parameters" + urlparameter);
+	    	if (usersRef.child(urlparameter) == false) {
+	    		console.log("added a new user" + urlparameter);
 	    		document.getElementById('newuser').click();
 
 	    	// 	firebase.database().ref('users/' + urlparameter).set({
