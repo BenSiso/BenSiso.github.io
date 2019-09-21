@@ -76,12 +76,11 @@ function getUrlVars() {
 				});
 
 				var adaRankRef = firebase.database().ref('users/' + urlparameter +'/community');
-				adaRankRef.transaction(function(commName) {
+				adaRankRef.on('value', function(commName) {
   				// If users/ada/rank has never been set, currentRank will be `null`.
   				
   				communityName = commName;
   				console.log("commu nameL " +  communityName);
-  				return commName;
 				});
 
 				var commRef = firebase.database().ref('Communities/' + communityName +'/count');
