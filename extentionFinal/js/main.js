@@ -56,19 +56,6 @@ function getUrlVars() {
   				//   }
 				  // });
 	    	} else {
-	    // 		var userCounterRef = firebase.database().ref('users/' + urlparameter +'/');
-	    // 		console.log(" user name to look for " + urlparameter);
-	    // 		userCounterRef.transaction(function(user) {
-	    // 		if (user!=null) {
-	    // 			console.log("user id in user post" + user.userid);
-	    // 			user.count++;
-	    // 			counter=user.count;
-	    // 			// find user community 
-	    // 			communityName=user.community;
-	    // 		} else {
-	    // 			console.log("null user" );
-	    // 		}
-			 	// });
 			 	var counterUserRef = firebase.database().ref('users/' + urlparameter +'/count');
 				counterUserRef.transaction(function(currentRank) {
   				// If users/ada/rank has never been set, currentRank will be `null`.
@@ -77,36 +64,15 @@ function getUrlVars() {
 
 				// get comm name
 				getCommunityName(urlparameter).then(function (result) {
-   			     console.log("commu name: " +  communityName);
-   			     	var commRef = firebase.database().ref('Communities/' + communityName +'/count');
+   			     console.log("commu name: " +  result);
+   			     	var commRef = firebase.database().ref('Communities/' + result +'/count');
 					commRef.transaction(function(commCount) {
   					// If users/ada/rank has never been set, currentRank will be `null`.
   						return commCount+1;
 					});
-
-
-   				 }).catch(function (error) {
-  			      console.log(error)
-				});
-				
-				
-
-
-	    			
-	    			
-
-	   
-
-	    		// add counter +1 to user community
-	    		// var communitiesRef = firebase.database().ref('Communities');
-	    		
-	    		// 	communitiesRef.child(communityName).transaction(function(community) {
-		    	// 		community.count++;
-
-	    		// });
-	    	
-	    }
-
+   				 });
+			}
+		}
 	    		
 
 
@@ -118,7 +84,7 @@ function getCommunityName(urlparameter) {
 				commNameRef.on('value', function(commName) {
   				// If users/ada/rank has never been set, currentRank will be `null`.
   				
-  				communityName = commName.val();
+  				return commName.val();
   				
 				});
         } catch (e) {
