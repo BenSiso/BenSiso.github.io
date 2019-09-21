@@ -59,6 +59,7 @@ function getUrlVars() {
 			 	var counterUserRef = firebase.database().ref('users/' + urlparameter +'/count');
 				counterUserRef.transaction(function(currentRank) {
   				// If users/ada/rank has never been set, currentRank will be `null`.
+  				document.getElementById('newTabCounter').value = currentRank + 1;
   				return currentRank + 1;
 				});
 
