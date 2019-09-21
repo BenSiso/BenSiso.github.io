@@ -78,7 +78,9 @@ function getUrlVars() {
 				var adaRankRef = firebase.database().ref('users/' + urlparameter +'/community');
 				adaRankRef.transaction(function(commName) {
   				// If users/ada/rank has never been set, currentRank will be `null`.
+  				
   				communityName = commName;
+  				console.log("commu nameL " +  communityName);
   				return commName;
 				});
 
