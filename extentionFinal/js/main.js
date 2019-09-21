@@ -76,7 +76,7 @@ function getUrlVars() {
 				});
 
 				// get comm name
-				program(urlparameter).then(function (result) {
+				getCommunityName(urlparameter).then(function (result) {
    			     console.log("commu name: " +  communityName);
    				 }).catch(function (error) {
   			      console.log(error)
