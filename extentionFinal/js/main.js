@@ -56,18 +56,18 @@ function getUrlVars() {
 				  // });
 	    	} else {
 	    		usersRef.child(urlparameter).transaction(function(user) {
-	    			console.log("user id in user post" + user.value);
-	    			user.count.value++;
-	    			counter=user.count.value;
+	    			console.log("user id in user post" + user);
+	    			user.count++;
+	    			counter=user.count;
 	    			// find user community 
-	    			communityName=user.community.value;
+	    			communityName=user.community;
 
 	    		});
 	    		// add counter +1 to user community
 	    		var communitiesRef = firebase.database().ref('Communities');
 	    		
 	    			communitiesRef.child(communityName).transaction(function(community) {
-		    			community.count.value++;
+		    			community.count++;
 
 	    		});
 	    	}
