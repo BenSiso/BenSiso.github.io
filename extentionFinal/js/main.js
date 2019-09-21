@@ -56,15 +56,26 @@ function getUrlVars() {
   				//   }
 				  // });
 	    	} else {
-	    		var userRef = firebase.database().ref('users/' + urlparameter);
-	    		userRef.transaction(function(user) {
+	    		var userCounterRef = firebase.database().ref('users/' + urlparameter + '/count');
+	    		userCounterRef.transaction(function(count) {
+	    		if (user!=null) {
 	    			console.log("user id in user post" + user.userid);
 	    			user.count++;
 	    			counter=user.count;
 	    			// find user community 
 	    			communityName=user.community;
+	    		}, function(error) {
+    			if (error) {
+    				  console.log("ERRROR:" + error);
+   				 } else {
+   				   // Data saved successfully!
+ 				   }
+				  };
 
-	    		});
+	    			
+	    			
+
+	   
 
 	    		// add counter +1 to user community
 	    		// var communitiesRef = firebase.database().ref('Communities');
