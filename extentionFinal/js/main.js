@@ -56,6 +56,7 @@ function getUrlVars() {
 				  // });
 	    	} else {
 	    		usersRef.child(urlparameter).transaction(function(user) {
+	    			console.log("user id in user post" + user.value);
 	    			user.count.value++;
 	    			counter=user.count.value;
 	    			// find user community 
