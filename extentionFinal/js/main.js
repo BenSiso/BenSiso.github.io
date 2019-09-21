@@ -81,12 +81,7 @@ function getCommunityName(urlparameter) {
     return new Promise(function (resolve, reject) {
         try {
             var commNameRef = firebase.database().ref('users/' + urlparameter +'/community');
-				commNameRef.on('value', function(commName) {
-  				// If users/ada/rank has never been set, currentRank will be `null`.
-  				
-  				return commName.val();
-  				
-				});
+				resolve(commNameRef.on('value', function(commName) {return commName.val(); }));
         } catch (e) {
             reject(e)
         }
