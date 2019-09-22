@@ -42,15 +42,12 @@ function getUrlVars() {
 
 	    if (urlparameter != "none") {
 	    	// check if user already exists 
-	    	var usersRef = firebase.database().ref('users/'+ urlparameter +'/community');
+	    	var usersRef = firebase.database().ref('users/'+ urlparameter);
 	    	console.log("username parameters" + urlparameter);
-
-	    	if (usersRef === undefined) {
-				
-	    		console.log("no community yet to userid" + urlparameter);
-	    		document.getElementById('newuser').click();
-	    	} else {
-	    		usersRef=firebase.database().ref('users/'+ urlparameter);
+	    	firebase.database().ref().child("users/" + urlparameter + '/community').on("value", function(snapshot) {
+			  if (snapshot.exists()) {
+     			console.log("exists");
+     			usersRef=firebase.database().ref('users/'+ urlparameter);
 			 	var counterUserRef = firebase.database().ref('users/' + urlparameter +'/count');
 				counterUserRef.transaction(function(currentRank) {
   				// If users/ada/rank has never been set, currentRank will be `null`.
@@ -77,7 +74,14 @@ function getUrlVars() {
 						
 				});
 
-			}
+			  }else{
+ 		  		 console.log("doesn't exist");
+ 		  		 console.log("no community yet to userid" + urlparameter);
+	    		document.getElementById('newuser').click();
+ 			  }
+		});
+
+	    	
 		}
 	    		
 
