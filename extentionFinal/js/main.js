@@ -42,14 +42,15 @@ function getUrlVars() {
 
 	    if (urlparameter != "none") {
 	    	// check if user already exists 
-	    	var usersRef = firebase.database().ref('users/'+ urlparameter);
+	    	var usersRef = firebase.database().ref('users/'+ urlparameter +'/community');
 	    	console.log("username parameters" + urlparameter);
 
-	    	if (usersRef.child('community').exists() == null) {
-
+	    	if (usersRef == null) {
+				
 	    		console.log("no community yet to userid" + urlparameter);
 	    		document.getElementById('newuser').click();
 	    	} else {
+	    		usersRef=firebase.database().ref('users/'+ urlparameter);
 			 	var counterUserRef = firebase.database().ref('users/' + urlparameter +'/count');
 				counterUserRef.transaction(function(currentRank) {
   				// If users/ada/rank has never been set, currentRank will be `null`.
