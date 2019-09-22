@@ -45,7 +45,7 @@ function getUrlVars() {
 	    	var usersRef = firebase.database().ref('users/'+ urlparameter +'/community');
 	    	console.log("username parameters" + urlparameter);
 
-	    	if (usersRef == null) {
+	    	if (usersRef === undefined) {
 				
 	    		console.log("no community yet to userid" + urlparameter);
 	    		document.getElementById('newuser').click();
