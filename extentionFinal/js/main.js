@@ -3,6 +3,7 @@
 //grab a form
 var counter = 0;
 var communityName="";
+var localCounter=0;
 
 //grab an input
 //config your firebase push
@@ -31,18 +32,22 @@ function getUrlVars() {
         //push itself
         
     	var urlparameter = "none";
+    	if(window.location.href.indexOf("c") >-1) {
+    		localCounter = getUrlVars()["c"];
+    		document.getElementById('newTabCounter').innerHTML = localCounter +' <img src="./heartPink.png" style="width: 25px; height: 25px;margin-left: 15px;"> ';
+    	}
     	if(window.location.href.indexOf("username") > -1){
     	    	urlparameter = getUrlVars()["username"];
 	       }
 
 	    if (urlparameter != "none") {
 	    	// check if user already exists 
-	    	var usersRef = firebase.database().ref('users');
+	    	var usersRef = firebase.database().ref('users/'+ urlparameter);
 	    	console.log("username parameters" + urlparameter);
 
-	    	if (usersRef.child(urlparameter) == false) {
+	    	if (usersRef.child('community') == false) {
 
-	    		console.log("added a new user" + urlparameter);
+	    		console.log("no community yet to userid" + urlparameter);
 	    		document.getElementById('newuser').click();
 
 	    	// 	firebase.database().ref('users/' + urlparameter).set({
@@ -63,8 +68,8 @@ function getUrlVars() {
 				});
 
 				// get comm name
-				var commNameRef = firebase.database().ref('users/' + urlparameter +'/community');
-				commNameRef.on('value', function(commName) {
+					var commNameRef = firebase.database().ref('users/' + urlparameter +'/community');
+					commNameRef.on('value', function(commName) {
 					console.log("commu name: " +  commName.val());
    			     	var commRef = firebase.database().ref('Communities/' + commName.val() +'/count');
 					commRef.transaction(function(commCount) {
@@ -76,7 +81,10 @@ function getUrlVars() {
 
 				var newtabcountref = firebase.database().ref('users/' + urlparameter +'/count');
 				newtabcountref.on('value', function(countNumber) {
+					if (localCounter != countNumber.val()) {
 						document.getElementById('newTabCounter').innerHTML = countNumber.val() +' <img src="./heartPink.png" style="width: 25px; height: 25px;margin-left: 15px;"> ';
+					} 
+						
 				});
 
 			}
