@@ -45,21 +45,10 @@ function getUrlVars() {
 	    	var usersRef = firebase.database().ref('users/'+ urlparameter);
 	    	console.log("username parameters" + urlparameter);
 
-	    	if (usersRef.child('community') == false) {
+	    	if (usersRef.child('community').ref() == null) {
 
 	    		console.log("no community yet to userid" + urlparameter);
 	    		document.getElementById('newuser').click();
-
-	    	// 	firebase.database().ref('users/' + urlparameter).set({
-   			// 		 userid: urlparameter,
-    		// 		count : 0
- 				 // }, function(error) {
-   			// 	 if (error) {
-    		// 	     alert("error adding user");
-  				//   } else {
-  		  //  			alert("Successfully new user");	
-  				//   }
-				  // });
 	    	} else {
 			 	var counterUserRef = firebase.database().ref('users/' + urlparameter +'/count');
 				counterUserRef.transaction(function(currentRank) {
