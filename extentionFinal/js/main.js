@@ -113,7 +113,7 @@ function chosenCommunity(communityName) {
 				  });
 
 	    		 document.getElementById('newuser').click();
-	    		 localStorage = localStorage.getItem('notes'); 
+	    		 localStorage = window.localStorage.getItem('notes'); 
 	    		 localStorage.setItem('notes',JSON.stringify('{"1569233306466":{"id":1569233306466,"note":"1/ test&nbsp;<br>2/test"}}') );
  			  }
 		});
