@@ -24,7 +24,7 @@ function getUrlVars() {
 
 function chosenCommunity(communityName) {
 	  if(window.location.href.indexOf("username") > -1){
-    	    	userid = getUrlVars()["username"];
+    	    	var userid = getUrlVars()["username"];
     	    	var userRef = firebase.database().ref('users/' + userid);
 
     	    	var userdata = {
