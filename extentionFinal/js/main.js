@@ -34,7 +34,7 @@ function chosenCommunity(communityName) {
  				 userRef.update(userdata);
  				var commRefMem = firebase.database().ref('Communities/' + communityName +'/members');
 					commRefMem.transaction(function(commMem) {
-  					// If users/ada/rank has never been set, currentRank will be `null`.
+  					//  test If users/ada/rank has never been set, currentRank will be `null`.
   						return commMem+1;
 				});
 				var commRef = firebase.database().ref('Communities/' + communityName +'/count');
