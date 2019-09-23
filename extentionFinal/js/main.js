@@ -26,15 +26,25 @@ function chosenCommunity(communityName) {
 	  if(window.location.href.indexOf("username") > -1){
     	    	var userid = getUrlVars()["username"];
     	    	var userRef = firebase.database().ref('users/' + userid);
-
     	    	var userdata = {
     				userid: userid,
    					 count: 1,
    					 community:communityName
  				 };
  				 userRef.update(userdata);
- 				 console.log("finish adding comm to user in real db");
- 				 document.getElementById('closeAppendCommunity').click();
+ 				var commRefMem = firebase.database().ref('Communities/' + communityName +'/members');
+					commRefMem.transaction(function(commMem) {
+  					// If users/ada/rank has never been set, currentRank will be `null`.
+  						return commMem+1;
+				});
+				var commRef = firebase.database().ref('Communities/' + communityName +'/count');
+					commRef.transaction(function(commCount) {
+  					// If users/ada/rank has never been set, currentRank will be `null`.
+  					console.log("finish adding comm to user in real db");
+ 				 	document.getElementById('closeAppendCommunity').click();
+  						return commCount+1;
+				});
+ 				 
 	   }
 
 }
