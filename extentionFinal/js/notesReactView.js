@@ -147,7 +147,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         getInitialState: function getInitialState() {
             return {
-                notes: [{"id":1569261093285,"note":"Welcome to tabFund.me notes!<br><br>1.&nbsp; Enjoy !<br>2. Your notes save ONLY!&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; on your computer!&nbsp;<br>3. They are NOT encrypted!!"}]
+                notes: []
             };
         },
         showNote: function showNote(evt) {
