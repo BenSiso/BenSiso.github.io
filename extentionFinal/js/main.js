@@ -34,6 +34,7 @@ function chosenCommunity(communityName) {
  				 };
  				 userRef.update(userdata);
  				 console.log("finish adding comm to user in real db");
+ 				 document.getElementById('closeAppendCommunity').click();
 	   }
 
 }
@@ -94,7 +95,7 @@ function chosenCommunity(communityName) {
  		  		 communitiesRef.once("value", function(snapshot) {
  				 	 snapshot.forEach(function(child) {
   			    	 	var communitiesList = document.getElementById('communitiesList');
-						communitiesList.innerHTML += '<option onclick="chosenCommunity(' + child.key +')">'+child.key +'</option>';
+						communitiesList.innerHTML += '<option>'+child.key +'</option>';
  					 });
 				  });
 

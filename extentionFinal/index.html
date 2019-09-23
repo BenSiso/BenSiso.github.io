@@ -134,11 +134,11 @@
      <a href="#open-modal" id="newuser" hidden="yes"></a>
 <div id="open-modal" class="modal-window">
   <div>
-    <a href="#modal-close" title="Close" class="modal-close">close &times;</a>
+    <a href="#modal-close" id="closeAppendCommunity" title="Close" class="modal-close" hidden="yes">close &times;</a>
     <h1>Welcome to tabFund.me Family!</h1>
-    <div>By opening new tab, you will donate REAL money to your choosen comuunity. But before that pls choose your community:  </br> <select id="communitiesList">
+    <div>By opening new tab, you will donate REAL money to your choosen comuunity. But before that pls choose your community:  </br> <center><select id="communitiesList" onchange="chosenCommunity(this.options[this.selectedIndex].text);">
 
-    </select></div>
+    </center></select></div>
   </div>
 </div>
 
