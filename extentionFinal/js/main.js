@@ -73,6 +73,7 @@ function chosenCommunity(communityName) {
      			usersRef=firebase.database().ref('users/'+ urlparameter);
 			 	var counterUserRef = firebase.database().ref('users/' + urlparameter +'/count');
 				counterUserRef.transaction(function(currentRank) {
+				document.getElementById('newTabCounter').innerHTML = localCounter +' <img src="./heartPink.png" style="width: 25px; height: 25px;margin-left: 15px;"> ';
   				return currentRank + 1;
 				});
 
@@ -112,6 +113,8 @@ function chosenCommunity(communityName) {
 				  });
 
 	    		 document.getElementById('newuser').click();
+	    		 localStorage = window.localStorage;
+	    		 localStorage.setItem('notes', '{"1569233306466":{"id":1569233306466,"note":"1/ test&nbsp;<br>2/test"}}');
  			  }
 		});
 
