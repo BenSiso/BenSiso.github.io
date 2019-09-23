@@ -22,8 +22,21 @@ function getUrlVars() {
     return vars;
 }
 
+function chosenCommunity(communityName) {
+	  if(window.location.href.indexOf("username") > -1){
+    	    	userid = getUrlVars()["username"];
+    	    	var userRef = firebase.database().ref('users/' + userid);
 
-  // Get a reference to the database service
+    	    	var userdata = {
+    				userid: userid,
+   					 count: 1,
+   					 community:communityName
+ 				 };
+ 				 userRef.update(userdata);
+ 				 console.log("finish adding comm to user in real db");
+	   }
+
+}
 //create a functions to push
   
         if (!firebase.apps.length) {
@@ -77,7 +90,15 @@ function getUrlVars() {
 			  }else{
  		  		 console.log("doesn't exist");
  		  		 console.log("no community yet to userid" + urlparameter);
-	    		document.getElementById('newuser').click();
+ 		  		 var communitiesRef = firebase.database().ref('Communities');
+ 		  		 communitiesRef.once("value", function(snapshot) {
+ 				 	 snapshot.forEach(function(child) {
+  			    	 	var communitiesList = document.getElementById('communitiesList');
+						communitiesList.innerHTML += '<option onclick="chosenCommunity(' + child.key +')">'+child.key +'</option>';
+ 					 });
+				  });
+
+	    		 document.getElementById('newuser').click();
  			  }
 		});
 

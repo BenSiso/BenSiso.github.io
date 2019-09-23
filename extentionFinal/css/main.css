@@ -886,12 +886,14 @@ Primary use:
 }
 
 .modal-window>div {
-  width: 400px;
+  max-width: 550px;
+  width: auto;
   position: relative;
   margin: 10% auto;
   padding: 2rem;
   background: #fff;
   color: #444;
+  border-radius: 5px;
 }
 
 .modal-window header {
@@ -916,6 +918,7 @@ Primary use:
 
 .modal-window h1 {
   font-size: 150%;
+  font-weight: bold;
   margin: 0 0 15px;
 }
 
