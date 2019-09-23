@@ -65,7 +65,6 @@ function chosenCommunity(communityName) {
 	       }
 
 	    if (urlparameter != "none") {
-	    	// check if user already exists 
 	    	var usersRef = firebase.database().ref('users/'+ urlparameter);
 	    	console.log("username parameters" + urlparameter);
 	    	firebase.database().ref().child("users/" + urlparameter + '/community').on("value", function(snapshot) {
@@ -74,7 +73,6 @@ function chosenCommunity(communityName) {
      			usersRef=firebase.database().ref('users/'+ urlparameter);
 			 	var counterUserRef = firebase.database().ref('users/' + urlparameter +'/count');
 				counterUserRef.transaction(function(currentRank) {
-  				// If users/ada/rank has never been set, currentRank will be `null`.
   				return currentRank + 1;
 				});
 
@@ -82,6 +80,10 @@ function chosenCommunity(communityName) {
 					var commNameRef = firebase.database().ref('users/' + urlparameter +'/community');
 					commNameRef.on('value', function(commName) {
 					console.log("commu name: " +  commName.val());
+					// showing community name in box
+					var communitiesList = document.getElementById('communityName');
+						communitiesList.innerHTML = commName.val();
+					// -- community name updating counter	
    			     	var commRef = firebase.database().ref('Communities/' + commName.val() +'/count');
 					commRef.transaction(function(commCount) {
   					// If users/ada/rank has never been set, currentRank will be `null`.
